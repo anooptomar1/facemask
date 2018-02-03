@@ -10,9 +10,23 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var faceImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let maskTest = FaceMask()
+        maskTest.facemask(image: faceImageView.image!.cgImage!, radius: 200) { result in
+            switch result {
+            case .success(let face):
+                self.faceImageView.image = face
+            case .notFound:
+                break
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
