@@ -9,18 +9,22 @@
 import UIKit
 import Vision
 
+public enum FaceMaskResult {
+    case success(UIImage?)
+    case notFound
+    case failure(Error)
+}
+
 class FaceMask {
 
-    public enum FaceCropResult {
-        case success(UIImage?)
-        case notFound
-        case failure(Error)
-    }
+    var allowsUpscaling: Bool = false
+    var preferredMargin: CGFloat = 0.0
     
-    public func facemask(image: CGImage, radius: CGFloat, _ completion: @escaping (FaceCropResult) -> Void) {
+    public func facemask(image: CGImage, radius: CGFloat, _ completion: @escaping (FaceMaskResult) -> Void) {
         
         let request = VNDetectFaceRectanglesRequest { request, error in
             guard let observations = request.results as? [VNFaceObservation] else {
+                completion(.notFound)
                 return
             }
 
@@ -30,7 +34,7 @@ class FaceMask {
 
                 let boundingBox = CGRect(origin: origin, size: size)
 
-                let croppedCGImage: CGImage = (image.cropping(to: boundingBox))!
+                let croppedCGImage: CGImage = image.cropping(to: boundingBox)!
                 return UIImage(cgImage: croppedCGImage)
             }
 
