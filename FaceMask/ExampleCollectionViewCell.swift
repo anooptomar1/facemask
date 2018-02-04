@@ -21,7 +21,7 @@ class ExampleCollectionViewCell: UICollectionViewCell {
     func updateImage(image: UIImage?) {
         if image != nil { imageView.image = image }
         let maskTest = FaceMask()
-        
+        maskTest.preferredMargin = 0
         maskTest.facemask(image: imageView.image!.cgImage!, radius: 200) { result in
             switch result {
             case .success(let face):

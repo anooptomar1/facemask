@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="531" height="637"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="celeb_wallpaper_004" translatesAutoresizingMaskIntoConstraints="NO" id="pTL-JB-XOb">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="_thumb_d32ca8a1-338a-498c-9d2c-e607d8acd634" translatesAutoresizingMaskIntoConstraints="NO" id="pTL-JB-XOb">
                         <rect key="frame" x="0.0" y="0.0" width="531" height="637"/>
                     </imageView>
                 </subviews>
@@ -39,6 +39,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="celeb_wallpaper_004" width="1920" height="1200"/>
+        <image name="_thumb_d32ca8a1-338a-498c-9d2c-e607d8acd634" width="400" height="225"/>
     </resources>
 </document>

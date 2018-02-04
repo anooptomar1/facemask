@@ -12,21 +12,33 @@ private let reuseIdentifier = "Cell"
 
 class ExampleCollectionViewController: UICollectionViewController {
 
+    var exampleData: [String] = ["mila-kunis-face-wallpaper-51808-53513-hd-wallpapers",
+                                 "celeb_wallpaper_004",
+                                 "_thumb_d32ca8a1-338a-498c-9d2c-e607d8acd634",
+                                 "actor-christian-bale-long-hairs-smile-beard-face-eyes-normal",
+                                 "josh_hartnett_actor_male_young_dark_brooding_mole_18757_1400x1050",
+                                 "68549144-female-wallpapers",
+                                 "best-halloween-costumes-inspired-by-characters-natalie-portman-leon-the-professional",
+                                 "881604180",
+                                 "GettyImages-672811306",
+                                 "3783427",
+                                 "nintchdbpict000189244267",
+                                 "nicolascage-faceoff-crazy",
+                                 "tdih-march14-HD",
+                                 "Face-Surgery-Head-4",
+                                 "Gifts-Barack-Obama-Fans"]
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
         collectionView!.register(UINib(nibName: "ExampleCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "exampleCollectionViewCell")
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
-
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -35,22 +47,20 @@ class ExampleCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 100
+        return exampleData.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exampleCollectionViewCell", for: indexPath) as? ExampleCollectionViewCell else {
             return UICollectionViewCell()
         }
-    
-        if indexPath.row % 2 == 0 {
-            cell.updateImage(image: UIImage(named:"_thumb_d32ca8a1-338a-498c-9d2c-e607d8acd634"))
-        } else {
-            cell.updateImage(image: UIImage(named:"celeb_wallpaper_004"))
-        }
-        
+
+        cell.updateImage(image: UIImage(named: exampleData[indexPath.row]))
+
         cell.imageView.layer.cornerRadius = cell.frame.width/2
         cell.imageView.clipsToBounds = true
+        cell.imageView.layer.borderWidth = 2
+        cell.imageView.layer.borderColor = UIColor.white.cgColor
         
         return cell
     }
